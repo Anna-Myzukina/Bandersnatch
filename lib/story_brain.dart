@@ -48,8 +48,9 @@ class StoryBrain {
   }
 
   void nextStory(int choiceNumber) {
-    if (choiceNumber == 1 && _storyNumber == 0 ||
-        choiceNumber == 1 && _storyNumber == 1) {
+    if (choiceNumber == 1 && _storyNumber == 0) {
+      _storyNumber = 2;
+    } else if (choiceNumber == 1 && _storyNumber == 1) {
       _storyNumber = 2;
     } else if (choiceNumber == 2 && _storyNumber == 0) {
       _storyNumber = 1;
@@ -67,6 +68,12 @@ class StoryBrain {
   void restart() {
     _storyNumber = 0;
   }
-}
 
-//TODO: Step 27 - Create a method called buttonShouldBeVisible() which checks to see if storyNumber is 0 or 1 or 2 (when both buttons should show choices) and return true if that is the case, else it should return false.
+  bool buttonShouldBeVisible() {
+    if (_storyNumber == 0 || _storyNumber == 1 || _storyNumber == 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
